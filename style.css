@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Offside&family=Silkscreen&display=swap');
+:root {
+    --backgroud: #1B2430;
+    --objects: #7A4495;
+    --colora: #B9FFF8;
+    --colorb : #6FEDD6;
+    --colorc : #FF9551;
+    --colord : #FF4A4A;
+    --colore : #003865;
+    --text : #000000;
+}
+
+* {
+    font-family: 'Silkscreen', cursive;;
+    margin: 0;
+    padding: 0;
+    background-color: var(--backgroud);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    height: 100vh;
+    flex-direction: column;
+
+}
+
+.albumArt {
+    border: 0px;
+}
+
+/* The animation code */
+@keyframes example {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+/* The element to apply the animation to */
+#albArt {
+    opacity: 100%;
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: all 2s;
+    animation-name: example;
+    animation-duration: 10s;
+    box-shadow: 0px 0px 5px var(--colorc);
+}
+
+.musicInfo {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* font-family: 'Offside', cursive; */
+    background: linear-gradient(-45deg, var(--colora), var(--colorb), var(--colorc), var(--colord));
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    border-radius: 4px;
+    color:  var(--text);
+    /* font-weight: bold; */
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#video {
+    display: none;
+}
+
+button {
+    width: 10rem;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: var(--text);
+    background-color: var(--objects);
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    margin: 0 1rem;
+}
+
+:before {
+    content: '';
+    background: linear-gradient(45deg, var(--colora), var(--colorb), var(--colorc), var(--colord), var(--colora), var(--colorb), var(--colorc), var(--colord));
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+button:active {
+    color: var(--colorc)
+}
+
+button:active:after {
+    background: transparent;
+}
+
+button:hover:before {
+    opacity: 1;
+}
+
+button:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--objects);
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.controls {
+    margin: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
